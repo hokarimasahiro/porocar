@@ -1,0 +1,32 @@
+{
+    "name": "porocar",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "pxt-getradiogroup": "github:hokarimasahiro/pxt-getradiogroup#78e41e0b856518157dbcb75b1baf4955bb02abaa",
+        "pxt-watchfont": "github:hokarimasahiro/pxt-watchfont#d5e3bf68305bc0ea0b17a19000a6f7f340f7f792",
+        "pxt-porocar": "github:hokarimasahiro/pxt-porocar#5bdf37dfa2a4e63f199259642de63c680d3f3db9"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "v4.0.18",
+        "tag": "v4.0.18",
+        "commits": "https://github.com/microsoft/pxt-microbit/commits/b9d2eeff8116b75fa50f663091b0e3acd800b7bc",
+        "target": "4.0.18",
+        "pxt": "7.0.14",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
