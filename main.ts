@@ -2,10 +2,19 @@ function デモ () {
     anaL = pins.analogReadPin(AnalogPin.P1) / 4
     anaR = pins.analogReadPin(AnalogPin.P2) / 4
     porocar.plotBarGraph(anaL, anaR)
-    if (anaL < 10 && anaR < 10) {
+    if (anaL < 25 && anaR < 25) {
     	
     } else {
-        porocar.carCtrl(100 - (anaL - anaR), 100 - (anaR - anaL))
+        porocar.carCtrl(demospeed - (anaL - anaR) * stearing, demospeed - (anaR - anaL) * stearing)
+    }
+    if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.White)) {
+    	
+    } else if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.Black)) {
+        porocar.carCtrl(200, 0)
+    } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.White)) {
+        porocar.carCtrl(0, 200)
+    } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.Black)) {
+        porocar.carCtrl(200, 200)
     }
 }
 radio.onReceivedNumber(function (receivedNumber) {
@@ -25,8 +34,14 @@ radio.onReceivedNumber(function (receivedNumber) {
         porocar.setNeoColor(porocar.colors(RGBColors.Black))
     }
 })
+input.onButtonPressed(Button.A, function () {
+    デモNO = 1
+})
 radio.onReceivedString(function (receivedString) {
     saveString = receivedString
+})
+input.onButtonPressed(Button.B, function () {
+    デモNO = 0
 })
 let right = 0
 let left = 0
@@ -34,6 +49,8 @@ let y = 0
 let x = 0
 let anaR = 0
 let anaL = 0
+let stearing = 0
+let demospeed = 0
 let デモNO = 0
 let saveString = ""
 let radioGroup = 0
@@ -49,6 +66,8 @@ basic.pause(1000)
 saveString = ""
 radio.setTransmitPower(7)
 デモNO = 0
+demospeed = 200
+stearing = 1.5
 basic.forever(function () {
     if (saveString != "") {
         x = parseFloat(saveString.split(",")[1])
