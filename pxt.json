@@ -7,7 +7,7 @@
         "microphone": "*",
         "pxt-getradiogroup": "github:hokarimasahiro/pxt-getradiogroup#78e41e0b856518157dbcb75b1baf4955bb02abaa",
         "pxt-watchfont": "github:hokarimasahiro/pxt-watchfont#d5e3bf68305bc0ea0b17a19000a6f7f340f7f792",
-        "pxt-porocar": "github:hokarimasahiro/pxt-porocar#08afb79b1f1fdfa43d35766c5108085432e2c091"
+        "pxt-porocar": "github:hokarimasahiro/pxt-porocar#16f2f191392f3c5102f4b11bd89f39b6f0b7ebe3"
     },
     "files": [
         "main.blocks",
@@ -21,7 +21,7 @@
         "branch": "v4.0.18",
         "tag": "v4.0.18",
         "commits": "https://github.com/microsoft/pxt-microbit/commits/b9d2eeff8116b75fa50f663091b0e3acd800b7bc",
-        "target": "4.0.18",
+        "target": "5.0.6",
         "pxt": "7.0.14",
         "targetId": "microbit"
     },
