@@ -1,16 +1,23 @@
 function デモ () {
-    anaL = pins.analogReadPin(AnalogPin.P1) / 4
-    anaR = pins.analogReadPin(AnalogPin.P2) / 4
-    if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.White)) {
+    anaL = pins.analogReadPin(AnalogPin.P1)
+    anaR = pins.analogReadPin(AnalogPin.P2)
+    porocar.plotBarGraph(anaL / 4, anaR / 4)
+    if (anaL < whiteLebel && anaR < whiteLebel) {
     	
-    } else if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.Black)) {
-        porocar.carCtrl(demospeed, 0)
-    } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.White)) {
-        porocar.carCtrl(0, demospeed)
-    } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.Black)) {
-        porocar.carCtrl(demospeed, demospeed)
+    } else if (anaL < whiteLebel && anaR > blackLebel) {
+        left = demospeed
+        right = 0
+        porocar.carCtrl(left, right)
+    } else if (anaL > blackLebel && anaR < whiteLebel) {
+        left = 0
+        right = demospeed
+        porocar.carCtrl(left, right)
+    } else {
+        left = demospeed - (anaL - anaR) * stearing
+        right = demospeed - (anaR - anaL) * stearing
+        porocar.carCtrl(left, right)
     }
-    porocar.plotBarGraph(anaL, anaR)
+    radio.sendString("" + anaL + "," + anaR + "," + left + "," + right)
 }
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
@@ -38,12 +45,15 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     デモNO = 0
 })
-let right = 0
-let left = 0
 let y = 0
 let x = 0
+let right = 0
+let left = 0
 let anaR = 0
 let anaL = 0
+let blackLebel = 0
+let whiteLebel = 0
+let stearing = 0
 let demospeed = 0
 let デモNO = 0
 let saveString = ""
@@ -60,8 +70,10 @@ basic.pause(1000)
 saveString = ""
 radio.setTransmitPower(7)
 デモNO = 0
-demospeed = 150
-let stearing = 1.5
+demospeed = 120
+stearing = 0.15
+whiteLebel = 100
+blackLebel = 500
 basic.forever(function () {
     if (saveString != "") {
         x = parseFloat(saveString.split(",")[1])
