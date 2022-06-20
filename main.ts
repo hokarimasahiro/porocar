@@ -1,12 +1,6 @@
 function デモ () {
     anaL = pins.analogReadPin(AnalogPin.P1) / 4
     anaR = pins.analogReadPin(AnalogPin.P2) / 4
-    porocar.plotBarGraph(anaL, anaR)
-    if (anaL < 25 && anaR < 25) {
-    	
-    } else {
-        porocar.carCtrl(demospeed - (anaL - anaR) * stearing, demospeed - (anaR - anaL) * stearing)
-    }
     if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.White)) {
     	
     } else if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.Black)) {
@@ -16,6 +10,7 @@ function デモ () {
     } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.Black)) {
         porocar.carCtrl(200, 200)
     }
+    porocar.plotBarGraph(anaL, anaR)
 }
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
@@ -49,8 +44,6 @@ let y = 0
 let x = 0
 let anaR = 0
 let anaL = 0
-let stearing = 0
-let demospeed = 0
 let デモNO = 0
 let saveString = ""
 let radioGroup = 0
@@ -66,8 +59,8 @@ basic.pause(1000)
 saveString = ""
 radio.setTransmitPower(7)
 デモNO = 0
-demospeed = 200
-stearing = 1.5
+let demospeed = 200
+let stearing = 1.5
 basic.forever(function () {
     if (saveString != "") {
         x = parseFloat(saveString.split(",")[1])
