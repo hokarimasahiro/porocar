@@ -7,7 +7,7 @@
         "microphone": "*",
         "pxt-getradiogroup": "github:hokarimasahiro/pxt-getradiogroup#78e41e0b856518157dbcb75b1baf4955bb02abaa",
         "pxt-watchfont": "github:hokarimasahiro/pxt-watchfont#d5e3bf68305bc0ea0b17a19000a6f7f340f7f792",
-        "pxt-porocar": "github:hokarimasahiro/pxt-porocar#441d51e1375b32fa2145ef79518e6f4c399e1945"
+        "pxt-porocar": "github:hokarimasahiro/pxt-porocar#f30a2279c9e8c9dd25628e81a05d883b939edd22"
     },
     "files": [
         "main.blocks",
