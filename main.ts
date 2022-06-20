@@ -4,11 +4,11 @@ function デモ () {
     if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.White)) {
     	
     } else if (porocar.getLineColor(Position.Left, lineColor.White) && porocar.getLineColor(Position.Right, lineColor.Black)) {
-        porocar.carCtrl(200, 0)
+        porocar.carCtrl(demospeed, 0)
     } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.White)) {
-        porocar.carCtrl(0, 200)
+        porocar.carCtrl(0, demospeed)
     } else if (porocar.getLineColor(Position.Left, lineColor.Black) && porocar.getLineColor(Position.Right, lineColor.Black)) {
-        porocar.carCtrl(200, 200)
+        porocar.carCtrl(demospeed, demospeed)
     }
     porocar.plotBarGraph(anaL, anaR)
 }
@@ -44,6 +44,7 @@ let y = 0
 let x = 0
 let anaR = 0
 let anaL = 0
+let demospeed = 0
 let デモNO = 0
 let saveString = ""
 let radioGroup = 0
@@ -59,7 +60,7 @@ basic.pause(1000)
 saveString = ""
 radio.setTransmitPower(7)
 デモNO = 0
-let demospeed = 200
+demospeed = 150
 let stearing = 1.5
 basic.forever(function () {
     if (saveString != "") {
