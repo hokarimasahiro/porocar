@@ -7,14 +7,16 @@ function デモ () {
     } else if (anaL < whiteLebel && anaR > blackLebel) {
         left = demospeed
         right = 0
-        porocar.carCtrl(left, right)
     } else if (anaL > blackLebel && anaR < whiteLebel) {
         left = 0
         right = demospeed
-        porocar.carCtrl(left, right)
     } else {
         left = demospeed - (anaL - anaR) * stearing
         right = demospeed - (anaR - anaL) * stearing
+    }
+    if (porocar.getDistance() < 5) {
+        porocar.carCtrl(0, 0)
+    } else {
         porocar.carCtrl(left, right)
     }
 }
@@ -37,12 +39,14 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 input.onButtonPressed(Button.A, function () {
     デモNO = 1
+    radioGroup = 99
 })
 radio.onReceivedString(function (receivedString) {
     saveString = receivedString
 })
 input.onButtonPressed(Button.B, function () {
     デモNO = 0
+    radioGroup = 99
 })
 let y = 0
 let x = 0
