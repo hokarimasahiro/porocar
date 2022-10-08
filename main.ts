@@ -14,7 +14,7 @@ function デモ () {
         left = demospeed - (anaL - anaR) * stearing
         right = demospeed - (anaR - anaL) * stearing
     }
-    if (porocar.getDistance() < 5) {
+    if (porocar.getDistance() < 100) {
         porocar.carCtrl(0, 0)
     } else {
         porocar.carCtrl(left, right)
