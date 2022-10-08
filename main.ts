@@ -17,7 +17,6 @@ function デモ () {
         right = demospeed - (anaR - anaL) * stearing
         porocar.carCtrl(left, right)
     }
-    radio.sendString("" + anaL + "," + anaR + "," + left + "," + right)
 }
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
