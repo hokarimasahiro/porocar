@@ -17,11 +17,13 @@ function デモ () {
     distance = porocar.getDistance()
     if (distance < 100) {
         porocar.carCtrl(0, 0)
-        demospeed += -10
-    } else if (distance < 100) {
-        demospeed += 10
     } else {
         porocar.carCtrl(left, right)
+    }
+    if (distance <= 0) {
+        demospeed = Math.constrain(demospeed, 0, maxdemospeed)
+    } else if (distance <= 100) {
+        demospeed += -10
     }
 }
 radio.onReceivedNumber(function (receivedNumber) {
@@ -63,6 +65,7 @@ let blackLebel = 0
 let whiteLebel = 0
 let stearing = 0
 let demospeed = 0
+let maxdemospeed = 0
 let デモNO = 0
 let saveString = ""
 let radioGroup = 0
@@ -78,7 +81,8 @@ basic.pause(1000)
 saveString = ""
 radio.setTransmitPower(7)
 デモNO = 0
-demospeed = 120
+maxdemospeed = 120
+demospeed = maxdemospeed
 stearing = 0.15
 whiteLebel = 100
 blackLebel = 500
