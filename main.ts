@@ -14,8 +14,12 @@ function デモ () {
         left = demospeed - (anaL - anaR) * stearing
         right = demospeed - (anaR - anaL) * stearing
     }
-    if (porocar.getDistance() < 100) {
+    distance = porocar.getDistance()
+    if (distance < 100) {
         porocar.carCtrl(0, 0)
+        demospeed += -10
+    } else if (distance < 100) {
+        demospeed += 10
     } else {
         porocar.carCtrl(left, right)
     }
@@ -50,6 +54,7 @@ input.onButtonPressed(Button.B, function () {
 })
 let y = 0
 let x = 0
+let distance = 0
 let right = 0
 let left = 0
 let anaR = 0
