@@ -21,10 +21,11 @@ function デモ () {
         porocar.carCtrl(left, right)
     }
     if (distance <= 0) {
-        demospeed = Math.constrain(demospeed, 0, maxdemospeed)
+        demospeed += 10
     } else if (distance <= 100) {
         demospeed += -10
     }
+    demospeed = Math.constrain(demospeed, 0, maxdemospeed)
 }
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
